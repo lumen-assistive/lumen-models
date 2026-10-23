@@ -1,0 +1,137 @@
+# Machine-readable mirror of LICENSES.md. Keep both in sync by hand:
+# this file drives the automated compliance gate in
+# src/lumen_models/license_check.py (exercised by the real test suite
+# and by `lumen-models check-licenses`); LICENSES.md carries the full
+# human-readable rationale and sources for each entry.
+#
+# compatible_with_apache_2_0 is `true` only once a license has been
+# checked against its official, current source and found to impose no
+# restriction that conflicts with distributing Lumen's Apache-2.0 code
+# alongside it. `false` means a known conflict exists. `null` means the
+# answer genuinely depends on a choice not made yet (e.g. "which voice"),
+# not that it hasn't been checked.
+licenses:
+  - id: whisper-mit
+    component: "OpenAI Whisper (model weights and reference code)"
+    spdx: MIT
+    compatible_with_apache_2_0: true
+    notes: >-
+      Verified 2026-10-23 against github.com/openai/whisper LICENSE.
+  - id: whisper-cpp-mit
+    component: "whisper.cpp (on-device inference engine)"
+    spdx: MIT
+    compatible_with_apache_2_0: true
+    notes: >-
+      Verified 2026-10-23 against github.com/ggml-org/whisper.cpp
+      LICENSE.
+  - id: ultralytics-yolo-agpl-3.0
+    component: "Ultralytics YOLO (v8 and later)"
+    spdx: AGPL-3.0-only
+    compatible_with_apache_2_0: false
+    notes: >-
+      Verified 2026-10-23 against github.com/ultralytics/ultralytics
+      LICENSE. AGPL-3.0, dual-licensed commercially by Ultralytics for
+      closed distribution. Not bundled. Use MediaPipe's Apache-2.0
+      object detection task instead for obstacle detection.
+  - id: mediapipe-apache-2.0
+    component: "Google MediaPipe (tasks, including object detection)"
+    spdx: Apache-2.0
+    compatible_with_apache_2_0: true
+    notes: >-
+      Verified 2026-10-23 against
+      github.com/google-ai-edge/mediapipe LICENSE. One vendored utility
+      file under a BSD-style notice does not change the overall
+      verdict.
+  - id: paddleocr-apache-2.0
+    component: PaddleOCR
+    spdx: Apache-2.0
+    compatible_with_apache_2_0: true
+    notes: >-
+      Verified 2026-10-23 against
+      github.com/PaddlePaddle/PaddleOCR LICENSE.
+  - id: yamnet-apache-2.0
+    component: "YAMNet (tensorflow/models)"
+    spdx: Apache-2.0
+    compatible_with_apache_2_0: true
+    notes: >-
+      Verified 2026-10-23: YAMNet has no separate per-model license
+      file; it inherits the tensorflow/models repository's root
+      Apache-2.0 LICENSE.
+  - id: piper-mit-archived
+    component: "Piper TTS engine (rhasspy/piper, archived, last MIT release)"
+    spdx: MIT
+    compatible_with_apache_2_0: true
+    notes: >-
+      The original rhasspy/piper repository was MIT-licensed and was
+      archived on 2025-10-06. Active development moved to
+      OHF-Voice/piper1-gpl, now under GPL-3.0, which is NOT used here.
+      Pin to the last MIT-licensed tag of the archived repository;
+      re-evaluate before ever syncing anything from the GPL-3.0 fork.
+  - id: piper-gpl-3.0-not-used
+    component: "Piper TTS engine, current fork (OHF-Voice/piper1-gpl)"
+    spdx: GPL-3.0-only
+    compatible_with_apache_2_0: false
+    notes: >-
+      Recorded for clarity only: this is the actively maintained
+      successor to piper-mit-archived and is NOT used by Lumen, since
+      its copyleft terms conflict with Apache-2.0 distribution.
+  - id: espeak-ng-gpl-3.0
+    component: "espeak-ng (phonemization dependency referenced by Piper)"
+    spdx: GPL-3.0-or-later
+    compatible_with_apache_2_0: false
+    notes: >-
+      UNRESOLVED, flagged rather than assumed: verify whether the
+      MIT-era Piper release links espeak-ng at build time before
+      shipping anything. If it does, that is a separate compliance
+      question independent of which Piper repository is used (process
+      isolation, or a non-GPL phonemizer, would need evaluating).
+  - id: piper-voice-per-voice
+    component: "Individual Piper voice models"
+    spdx: varies
+    compatible_with_apache_2_0: null
+    notes: >-
+      License varies per voice: the piper-voices catalog includes CC0,
+      MIT, Apache-2.0, and CC-BY-4.0 voices, alongside some marked
+      non-commercial/research-only. No specific Italian voice has been
+      selected yet. Verify the chosen voice's own MODEL_CARD on
+      huggingface.co/rhasspy/piper-voices before bundling it; this
+      entry cannot be marked compatible until a specific voice is
+      chosen and checked.
+  - id: arasaac-cc-by-nc-sa
+    component: "ARASAAC pictograms"
+    spdx: CC-BY-NC-SA-4.0
+    compatible_with_apache_2_0: false
+    notes: >-
+      Verified 2026-10-23: published by the Government of Aragon under
+      Creative Commons BY-NC-SA, which requires attribution,
+      share-alike, and forbids commercial use. Not used by any
+      MVP-phase module (Vedere, Sentire, Protezione, Famiglia do not
+      need AAC symbols). Before any future communication-board module
+      bundles a symbol set: either request explicit written permission
+      from the rights holder, or evaluate an alternative set with a
+      verified compatible license, or commission original icons.
+  - id: phi-3-mini-mit
+    component: "Microsoft Phi-3-mini-4k-instruct"
+    spdx: MIT
+    compatible_with_apache_2_0: true
+    notes: >-
+      Candidate small on-device LLM. Verified 2026-10-23 against the
+      model card at huggingface.co/microsoft/Phi-3-mini-4k-instruct.
+  - id: gemma-4-apache-2.0
+    component: "Google Gemma 4 (E2B / E4B)"
+    spdx: Apache-2.0
+    compatible_with_apache_2_0: true
+    notes: >-
+      Candidate small on-device LLM. Gemma 4, released 2026-04-02,
+      switched to Apache-2.0; earlier Gemma versions (1 through 3)
+      used a custom, non-OSI "Gemma Terms of Use" with a prohibited-use
+      policy and redistribution notice requirements, and are not used.
+  - id: qwen2.5-1.5b-instruct-apache-2.0
+    component: "Qwen2.5-1.5B-Instruct"
+    spdx: Apache-2.0
+    compatible_with_apache_2_0: true
+    notes: >-
+      Candidate small on-device LLM. Verified 2026-10-23 against the
+      model card at huggingface.co/Qwen/Qwen2.5-1.5B-Instruct. Other
+      Qwen2.5 sizes may carry different terms; re-verify if a different
+      size is chosen.
