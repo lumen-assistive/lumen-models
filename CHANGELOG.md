@@ -6,6 +6,8 @@ and this project adheres to [Semantic Versioning](https://semver.org).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-10-23
+
 ### Added
 
 - `docs/LICENSES.md` and `docs/licenses.yaml`: the model and dataset
