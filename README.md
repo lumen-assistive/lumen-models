@@ -1,7 +1,5 @@
 # lumen-models
 
-[Italiano](README.it.md) | English
-
 Model conversion, quantization, and benchmark scripts for
 [Lumen](https://github.com/lumen-assistive), plus the project's model
 and dataset license ledger.
