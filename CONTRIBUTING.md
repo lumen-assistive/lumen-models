@@ -30,7 +30,7 @@ request.
 ## Adding a new model to the catalog
 
 1. Research the model's current, official license. Do not rely on
-   memory or on what another project's README says about it — check
+   memory or on what another project's README says about it. Check
    the model's own license file or terms page.
 2. Add or update an entry in `docs/licenses.yaml` with a dated note
    citing what you checked, and set `compatible_with_apache_2_0`

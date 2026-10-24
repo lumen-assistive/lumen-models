@@ -29,7 +29,7 @@ every new model version is adopted, not just once.
 
 ## Flagged conflicts and how they are handled
 
-### Ultralytics YOLO — AGPL-3.0
+### Ultralytics YOLO: AGPL-3.0
 
 Current Ultralytics YOLO releases (v8 and later) are licensed AGPL-3.0,
 with a separate paid Enterprise License for closed-source distribution.
@@ -40,7 +40,7 @@ ships an Apache-2.0-licensed object detection task sufficient for
 Vedere's obstacle-detection use case, so this conflict is avoided by
 depending on MediaPipe instead rather than needing an exception.
 
-### Piper — engine relicensed from MIT to GPL-3.0
+### Piper: engine relicensed from MIT to GPL-3.0
 
 The original `rhasspy/piper` repository was MIT-licensed. On
 2025-10-06 it was archived, and active development moved to
@@ -51,7 +51,7 @@ relicensing. The cost is forgoing upstream improvements made after the
 relicense; re-evaluate this trade-off periodically, and never sync
 code from the GPL-3.0 fork into this project.
 
-### espeak-ng — GPL-3.0 phonemization dependency
+### espeak-ng: GPL-3.0 phonemization dependency
 
 Piper's phonemization step has historically relied on `espeak-ng`,
 which is GPL-3.0-or-later. **This is not yet resolved.** Before
@@ -62,7 +62,7 @@ a separately-installed copy (a different, likely more favorable,
 compliance posture). If it does link at build time, evaluate process
 isolation or a non-GPL phonemizer before release.
 
-### Piper voices — per-voice licensing
+### Piper voices: per-voice licensing
 
 Individual Piper voice models are trained on different datasets with
 different licenses: the public catalog includes CC0, MIT, Apache-2.0,
@@ -71,18 +71,18 @@ research-only. **No specific Italian voice has been selected yet.**
 Whoever selects the production Italian (and any English) voice must
 check that exact voice's own `MODEL_CARD` on
 `huggingface.co/rhasspy/piper-voices` and record the result as a new,
-specific entry in `licenses.yaml` — the generic `piper-voice-per-voice`
+specific entry in `licenses.yaml`. The generic `piper-voice-per-voice`
 entry here is deliberately left unresolved (`compatible_with_apache_2_0:
 null`) rather than assumed compatible, and `lumen-models
 check-licenses` will reject a catalog entry that references it
 directly for exactly that reason.
 
-### ARASAAC pictograms — CC-BY-NC-SA-4.0
+### ARASAAC pictograms: CC-BY-NC-SA-4.0
 
 ARASAAC publishes its pictogram set under Creative Commons
 Attribution-NonCommercial-ShareAlike 4.0, administered by the
 Government of Aragon. The NonCommercial clause conflicts with
-unrestricted redistribution. **No MVP-phase module needs this** —
+unrestricted redistribution. **No MVP-phase module needs this**:
 Vedere, Sentire, Protezione, and Famiglia do not use AAC symbols.
 Before any future communication-board module (on the long-term
 roadmap, not yet built) considers bundling a symbol set: either
@@ -97,13 +97,13 @@ Three real, currently-permissively-licensed candidates exist for
 features like leaflet question-answering (Vedere) or study assistance
 (a future Leggere e Studiare module): Microsoft's Phi-3-mini-4k-instruct
 (MIT), Google's Gemma 4 in its smaller E2B/E4B sizes (Apache-2.0, as of
-the 2026-04-02 Gemma 4 release — earlier Gemma versions 1 through 3
-used a custom, non-OSI "Gemma Terms of Use" with a prohibited-use
-policy, and are not candidates), and Qwen2.5-1.5B-Instruct
-(Apache-2.0). None has been benchmarked yet; final selection is a
-`lumen-models` benchmarking decision (latency, memory, and output
-quality on target low-end hardware), not a licensing one, since all
-three are already cleared.
+its 2026-04-02 release), and Qwen2.5-1.5B-Instruct (Apache-2.0). Earlier
+Gemma versions 1 through 3 used a custom, non-OSI "Gemma Terms of Use"
+with a prohibited-use policy and are not candidates. None of the three
+has been benchmarked yet; final selection is a `lumen-models`
+benchmarking decision (latency, memory, and output quality on target
+low-end hardware), not a licensing one, since all three are already
+cleared.
 
 ## Process
 
@@ -115,5 +115,5 @@ three are already cleared.
    `tests/test_license_check.py`) fails if a catalog entry references a
    license id that is missing or not marked `true`.
 3. Never set `compatible_with_apache_2_0: true` from memory or
-   assumption — check the project's current, official license file or
+   assumption. Check the project's current, official license file or
    terms page for that specific version before recording a verdict.

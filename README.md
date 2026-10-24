@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/lumen-assistive/.github/main/profile/assets/logo-wordmark.png" alt="Lumen" width="200">
+</p>
+
 # lumen-models
 
 Model conversion, quantization, and benchmark scripts for
@@ -15,7 +19,7 @@ and dataset license ledger.
 - `src/lumen_models/catalog.py`: the `ModelDescriptor` catalog, mirroring
   the shape of `lumen_sdk`'s `ModelDescriptor` contract. Empty today;
   entries are added only once a real on-device artifact exists.
-- `src/lumen_models/license_check.py`: an automated compliance gate —
+- `src/lumen_models/license_check.py`: an automated compliance gate.
   CI fails if a catalog entry ever references a license that is
   missing from the ledger or not cleared for Apache-2.0 distribution.
 - `src/lumen_models/convert/`: the model conversion pipeline interface
@@ -30,9 +34,9 @@ and dataset license ledger.
 ## Current scope
 
 No model has actually been converted, quantized, or benchmarked yet.
-This release ships the governance and tooling scaffold — the license
+This release ships the governance and tooling scaffold: the license
 ledger, the catalog schema and its compliance gate, the conversion
-pipeline interface, and the benchmark harness — all real and tested.
+pipeline interface, and the benchmark harness, all real and tested.
 Per-framework converters (TFLite, ONNX, GGUF for whisper.cpp/llama.cpp)
 are added incrementally as each plugin module needs a concrete model,
 rather than installing several heavyweight ML toolchains speculatively
@@ -64,5 +68,5 @@ how to add a new model to the catalog without breaking the license gate.
 Apache License 2.0, see [LICENSE](LICENSE), for the code in this
 repository. See [docs/LICENSES.md](docs/LICENSES.md) for the licenses
 of the third-party models this repository converts, quantizes, and
-benchmarks — those are not all Apache-2.0, and some are deliberately
+benchmarks. Those are not all Apache-2.0, and some are deliberately
 not bundled at all.
